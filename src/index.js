@@ -72,7 +72,6 @@ function startGame(board) {
 
 function checkWinner(board) {
   //check for columns
-  var winner = false;
 
   for (var i = 0; i < 5; i++) {
     let a = board.rows[0].cells[i].innerHTML;
@@ -87,51 +86,43 @@ function checkWinner(board) {
 
     if (a === b && b === c && c === d && d === e) {
       win(board);
-      winner = true;
       break;
     }
   }
   //checks rows
-  if (winner === false) {
-    for (var j = 0; j < 5; j++) {
-      let a = board.rows[j].cells[0].innerHTML;
-      let b = board.rows[j].cells[1].innerHTML;
-      let c = board.rows[j].cells[2].innerHTML;
-      let d = board.rows[j].cells[3].innerHTML;
-      let e = board.rows[j].cells[4].innerHTML;
+  for (var j = 0; j < 5; j++) {
+    let a = board.rows[j].cells[0].innerHTML;
+    let b = board.rows[j].cells[1].innerHTML;
+    let c = board.rows[j].cells[2].innerHTML;
+    let d = board.rows[j].cells[3].innerHTML;
+    let e = board.rows[j].cells[4].innerHTML;
 
-      if (a === "" || b === "" || c === "" || d === "" || e === "") {
-        continue;
-      }
+    if (a === "" || b === "" || c === "" || d === "" || e === "") {
+      continue;
+    }
 
-      if (a === b && b === c && c === d && d === e) {
-        win(board);
-        winner = true;
-        break;
-      }
+    if (a === b && b === c && c === d && d === e) {
+      win(board);
+      break;
     }
   }
 
   //check diagonal
-  if (winner === false) {
-    let a = board.rows[0].cells[0].innerHTML;
-    let b = board.rows[1].cells[1].innerHTML;
-    let c = board.rows[2].cells[2].innerHTML;
-    let d = board.rows[3].cells[3].innerHTML;
-    let e = board.rows[4].cells[4].innerHTML;
-    let f = board.rows[0].cells[4].innerHTML;
-    let g = board.rows[1].cells[3].innerHTML;
-    let h = board.rows[2].cells[2].innerHTML;
-    let x = board.rows[3].cells[1].innerHTML;
-    let y = board.rows[4].cells[0].innerHTML;
+  let a = board.rows[0].cells[0].innerHTML;
+  let b = board.rows[1].cells[1].innerHTML;
+  let c = board.rows[2].cells[2].innerHTML;
+  let d = board.rows[3].cells[3].innerHTML;
+  let e = board.rows[4].cells[4].innerHTML;
+  let f = board.rows[0].cells[4].innerHTML;
+  let g = board.rows[1].cells[3].innerHTML;
+  let h = board.rows[2].cells[2].innerHTML;
+  let x = board.rows[3].cells[1].innerHTML;
+  let y = board.rows[4].cells[0].innerHTML;
 
-    if (a === b && b === c && c === d && d === e) {
-      win(board);
-      winner = true;
-    } else if (f === g && g === h && h === x && x === y) {
-      win(board);
-      winner = true;
-    }
+  if (a === b && b === c && c === d && d === e) {
+    win(board);
+  } else if (f === g && g === h && h === x && x === y) {
+    win(board);
   }
 }
 
